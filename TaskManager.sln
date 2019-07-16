@@ -6,10 +6,18 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Entities", "TaskManager.Entities\TaskManager.Entities.csproj", "{B5D40541-3D01-4E39-B70C-0C1075C4C54E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.BusinessLayer", "TaskManager.BusinessLayer\TaskManager.BusinessLayer.csproj", "{525FF433-50E7-4578-8CDD-0C838B4DEAF6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B5D40541-3D01-4E39-B70C-0C1075C4C54E} = {B5D40541-3D01-4E39-B70C-0C1075C4C54E}
+		{5CC728DF-2028-4B93-A58E-2359A78B086F} = {5CC728DF-2028-4B93-A58E-2359A78B086F}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.DataLayer", "TaskManager.DataLayer\TaskManager.DataLayer.csproj", "{5CC728DF-2028-4B93-A58E-2359A78B086F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.API", "TaskManager.API\TaskManager.API.csproj", "{BB4C634B-DE54-40B1-B32B-3943E9163C48}"
+	ProjectSection(ProjectDependencies) = postProject
+		{525FF433-50E7-4578-8CDD-0C838B4DEAF6} = {525FF433-50E7-4578-8CDD-0C838B4DEAF6}
+		{B5D40541-3D01-4E39-B70C-0C1075C4C54E} = {B5D40541-3D01-4E39-B70C-0C1075C4C54E}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Test", "TaskManager.Test\TaskManager.Test.csproj", "{48271534-1773-4460-B0E7-9A9503D77E90}"
 EndProject

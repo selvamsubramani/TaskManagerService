@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TaskManager.BusinessLayer
+namespace TaskManager.DataLayer
 {
-    public class Class1
+    public interface ITaskDataConnector
     {
+        IQueryable<Task> GetAllTasks();
     }
 }
