@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http.Results;
 using TaskManager.API.Controllers;
@@ -16,12 +17,12 @@ namespace TaskManager.Test
         {
             var process = new Mock<ITaskManagerProcess>();
             var taskInput = new Task[] { new Task { }, new Task { } };
-            process.Setup(m => m.GetTasks()).Returns(taskInput.AsQueryable());
+            process.Setup(m => m.GetTasks()).Returns(taskInput.AsEnumerable());
             var controller = new TaskController(process.Object);
             var tasks = controller.GetAllTasks();
             Assert.IsNotNull(tasks);
-            Assert.IsInstanceOfType(tasks, typeof(OkNegotiatedContentResult<IQueryable<Task>>));
-            var result = tasks as OkNegotiatedContentResult<IQueryable<Task>>;
+            Assert.IsInstanceOfType(tasks, typeof(OkNegotiatedContentResult<Task[]>));
+            var result = tasks as OkNegotiatedContentResult<Task[]>;
             Assert.AreEqual(taskInput.Length, result.Content.Count());
         }
 

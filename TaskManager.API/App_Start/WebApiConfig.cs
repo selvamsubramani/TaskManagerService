@@ -15,8 +15,14 @@ namespace TaskManager.API
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                name: "ApiById",
+                routeTemplate: "taskmanagerservice/{controller}/{action}/{id}",
+                defaults: new { id = RouteParameter.Optional }
+            );
+
+            config.Routes.MapHttpRoute(
+                name: "ApiByAction",
+                routeTemplate: "taskmanagerservice/{controller}/{action}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }

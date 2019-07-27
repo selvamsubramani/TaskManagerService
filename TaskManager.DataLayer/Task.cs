@@ -6,17 +6,21 @@ namespace TaskManager.DataLayer
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
+    [Table("Task")]
     public partial class Task
     {
-        [Key]
-        public int Task_ID { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Task()
+        {
+            ChildTask = new HashSet<Task>();
+        }
 
-        [Column("Task")]
+        public int ID { get; set; }
+
         [Required]
-        [StringLength(100)]
-        public string Task1 { get; set; }
+        public string Description { get; set; }
 
-        public int? Parent_ID { get; set; }
+        public int? ParentID { get; set; }
 
         public DateTime StartDate { get; set; }
 
@@ -25,5 +29,10 @@ namespace TaskManager.DataLayer
         public int Priority { get; set; }
 
         public bool Status { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Task> ChildTask { get; set; }
+
+        public virtual Task ParentTask { get; set; }
     }
 }

@@ -1,13 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 using TaskManager.Entities;
 
 namespace TaskManager.BusinessLayer
 {
     public interface ITaskManagerProcess
     {
-        IQueryable<Task> GetTasks();
+        IEnumerable<Task> GetTasks();
+        Task GetTaskByTaskId(int id);
+        bool AddTask(Task task);
+        bool EditTask(Task task);
+        bool EndTask(int id);
+        bool DeleteTask(int id);
     }
 }

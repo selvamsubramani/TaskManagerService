@@ -16,6 +16,14 @@ namespace TaskManager.DataLayer
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Task>()
+                .Property(e => e.Description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Task>()
+                .HasMany(e => e.ChildTask)
+                .WithOptional(e => e.ParentTask)
+                .HasForeignKey(e => e.ParentID);
         }
     }
 }
