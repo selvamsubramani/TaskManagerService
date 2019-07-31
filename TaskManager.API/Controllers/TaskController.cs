@@ -3,11 +3,13 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using TaskManager.BusinessLayer;
 using TaskManager.Entities;
 
 namespace TaskManager.API.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class TaskController : ApiController
     {
         private readonly ITaskManagerProcess _process;
@@ -26,6 +28,22 @@ namespace TaskManager.API.Controllers
             try
             {
                 var result = _process.GetTasks().ToArray();
+                if (result.Any())
+                    return Ok(result);
+                return ResponseMessage(new HttpResponseMessage(HttpStatusCode.NoContent));
+            }
+            catch (Exception ex)
+            {
+                return InternalServerError(ex);
+            }
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetAllParentTasks(int id)
+        {
+            try
+            {
+                var result = _process.GetTasks().Where(t => t.Id != id && (t.Parent == null || t.Parent.Id != id)).ToArray();
                 if (result.Any())
                     return Ok(result);
                 return ResponseMessage(new HttpResponseMessage(HttpStatusCode.NoContent));
