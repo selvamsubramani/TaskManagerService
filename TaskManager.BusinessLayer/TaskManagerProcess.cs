@@ -25,6 +25,15 @@ namespace TaskManager.BusinessLayer
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
+        public IEnumerable<Entities.Task> GetParentTasks(int id)
+        {
+            return _connector.GetAllParentTasks(id).ToArray().Select(x => ConvertToEntityTask(x));
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Entities.Task GetTaskByTaskId(int id)
         {
             var task = _connector.GetTaskById(id);

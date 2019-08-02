@@ -9,6 +9,7 @@ namespace TaskManager.DataLayer
     public interface ITaskDataConnector
     {
         IQueryable<Task> GetAllTasks();
+        IQueryable<Task> GetAllParentTasks(int id);
         Task GetTaskById(int id);
         void AddTask(Task task);
         void EditTask(Task task);

@@ -20,10 +20,22 @@ namespace TaskManager.DataLayer
                 return lazy.Value;
             }
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<Task> GetAllTasks()
         {
             return _model.Tasks;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public IQueryable<Task> GetAllParentTasks(int id)
+        {
+            return GetAllTasks().Where(t => t.ID != id && (t.ParentID == null || t.ParentID.Value != id));
         }
         /// <summary>
         /// 

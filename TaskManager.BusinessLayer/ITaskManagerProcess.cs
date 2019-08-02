@@ -6,6 +6,7 @@ namespace TaskManager.BusinessLayer
     public interface ITaskManagerProcess
     {
         IEnumerable<Task> GetTasks();
+        IEnumerable<Task> GetParentTasks(int id);
         Task GetTaskByTaskId(int id);
         bool AddTask(Task task);
         bool EditTask(Task task);
