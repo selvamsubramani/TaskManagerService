@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Web.Http;
 using System.Web.Http.Cors;
 
 namespace TaskManager.API
 {
+    [ExcludeFromCodeCoverage]
     public static class WebApiConfig
     {
         public static void Register(HttpConfiguration config)

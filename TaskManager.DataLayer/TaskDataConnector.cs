@@ -35,6 +35,7 @@ namespace TaskManager.DataLayer
         /// <returns></returns>
         public IQueryable<Task> GetAllParentTasks(int id)
         {
+            var t1 = GetAllTasks();
             return GetAllTasks().Where(t => t.ID != id && (t.ParentID == null || t.ParentID.Value != id));
         }
         /// <summary>
