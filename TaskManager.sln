@@ -23,6 +23,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.Test", "TaskMan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskManager.PerformanceTest", "TaskManager.PerformanceTest\TaskManager.PerformanceTest.csproj", "{94EF26DB-4A39-4D5D-813D-B3F001CFD1D1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E022DFCC-375F-4F2D-BDA1-24E6BE40B6A8}"
+	ProjectSection(SolutionItems) = preProject
+		CodeCoverage.bat = CodeCoverage.bat
+		CodeCoverageReport.bat = CodeCoverageReport.bat
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
